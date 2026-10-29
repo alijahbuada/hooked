@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HOOKED</title>
+<meta name="description" content="HOOKED, a short film by Alijah Jacob Buada, played as a low-poly summer game. Nothing bites until you stop trying.">
+<meta property="og:title" content="HOOKED">
+<meta property="og:description" content="A young woman kills time with small pleasures. A fisherman kills his with cards and cigarettes. They meet at a lake where nothing bites.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+<div class="page">
+  <div class="bar">
+    <div class="logo"><h1>HOOKED</h1><span>a short film by Alijah Jacob Buada</span></div>
+    <nav class="menu" aria-label="Menu">
+      <button class="btn" id="scenesBtn" type="button">Scenes</button>
+      <button class="btn" id="tackleBtn" type="button"><span class="dot" aria-hidden="true"></span>Tackle box</button>
+      <button class="btn" id="soundBtn" type="button" aria-pressed="false">Sound</button>
+      <a class="btn" href="lake.html">Sit by the lake</a>
+    </nav>
+  </div>
+
+  <div class="stage" id="stage">
+   <div class="screen">
+    <canvas id="scene" role="img" aria-label="HOOKED title screen: a low-poly lake at dawn."></canvas>
+    <span class="tag" id="tag" hidden></span>
+    <div class="prompt" id="prompt" hidden><span id="promptText"></span><span class="meter" id="meter" hidden><i id="meterFill"></i></span></div>
+    <div class="overlay" id="title">
+      <h2>HOOKED</h2>
+      <p class="line1">Avoid pain. Seek pleasure.</p>
+      <div class="row">
+        <button class="btn big" id="playBtn" type="button">Play the film</button>
+        <button class="btn big" id="titleScenes" type="button">Scenes</button>
+      </div>
+      <button class="btn" id="titleSound" type="button" aria-pressed="true">Sound on · turn off</button>
+      <small id="soundNote">About 20 minutes, or less if you keep busy.</small>
+    </div>
+   </div>
+    <div class="box idle" id="box" aria-live="polite">
+      <span class="who" id="who" hidden></span>
+      <p class="say" id="say"></p>
+      <p class="sub" id="sub"></p>
+      <div class="choices" id="choices"></div>
+      <span class="more" id="more" aria-hidden="true" hidden></span>
+    </div>
+  </div>
+  <p class="hint" id="hint">Tap the picture or the text box to move on. Nothing bites while you keep doing something.</p>
+
+  <footer class="foot">
+    <span>HOOKED · Twice Removed Productions · Made in Highland</span>
+    <span>twiceremovedproductions@gmail.com · @twiceremovedprod</span>
+  </footer>
+</div>
+
+<div class="scrim" id="scenesWin" hidden>
+  <section class="win narrow" role="dialog" aria-modal="true" aria-labelledby="scenesTitle">
+    <header><h2 id="scenesTitle">Scenes</h2><button class="btn" type="button" data-close>Close</button></header>
+    <div class="body"><ol class="scenes" id="sceneList"></ol></div>
+  </section>
+</div>
+
+<div class="scrim" id="tackleWin" hidden>
+  <section class="win" role="dialog" aria-modal="true" aria-labelledby="tackleTitle">
+    <header><h2 id="tackleTitle">Tackle box</h2><button class="btn" type="button" data-close>Close</button></header>
+    <div class="body"><div class="tackle"><div class="items" role="tablist" aria-label="Items" id="items"></div><div class="detail" id="detail" role="tabpanel"></div></div></div>
+  </section>
+</div>
+
+<div class="scrim" id="soundWin" hidden>
+  <section class="win narrow" role="dialog" aria-modal="true" aria-labelledby="soundTitle">
+    <header><h2 id="soundTitle">Sound</h2><button class="btn" type="button" data-close>Close</button></header>
+    <div class="body mixer">
+      <button class="btn" id="audioToggle" type="button" aria-pressed="false">Turn sound on</button>
+      <p class="status" style="margin:0">Sound is on by default and starts with your first tap or key press.</p>
+      <div class="slider"><label for="vAmb">Ambience</label><input id="vAmb" type="range" min="0" max="100" value="90"><output for="vAmb">90</output></div>
+      <div class="slider"><label for="vMusic">Music</label><input id="vMusic" type="range" min="0" max="100" value="70"><output for="vMusic">70</output></div>
+      <p class="status">Everything you hear is synthesized in the browser. The piano score is an original stand-in, written in the mellow spirit of Ryuichi Sakamoto’s music for <i>Tony Takitani</i>. The jazz in Sen’s earbuds is a nod to Ryo Fukui.</p>
+    </div>
+  </section>
+</div>
+
+<div class="scrim" id="endWin" hidden>
+  <section class="win narrow" role="dialog" aria-modal="true" aria-labelledby="endTitle">
+    <div class="body endcard">
+      <span class="kicker">THE END</span>
+      <h2 class="title" id="endTitle">HOOKED</h2>
+      <p class="tagline">Avoid pain. Seek pleasure.</p>
+      <p>A young woman kills time with small pleasures. A fisherman kills his with cards and cigarettes. They meet at a lake where nothing bites.</p>
+      <p style="color:var(--ink-soft)">Written and directed by Alijah Jacob Buada · Twice Removed Productions</p>
+      <div class="row">
+        <button class="btn" type="button" id="endTackle"><span class="dot" aria-hidden="true"></span>Open the tackle box</button>
+        <button class="btn" type="button" id="endAgain">Play again</button>
+        <a class="btn" href="lake.html">Sit by the lake</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="js/core.js"></script>
+<script src="js/figures.js"></script>
+<script src="js/sets-lake.js"></script>
+<script src="js/sets-places.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/pitch.js"></script>
+<script src="js/script.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
