@@ -37,27 +37,27 @@
   // ---------- the scenes ----------
   HK.SCENES = [
     {
-      n: 1, slug: 'INT. BEDROOM – MORNING', bed: { room: .8, town: .35, breath: .9 },
+      n: 1, slug: 'INT. BEDROOM – MORNING', bed: { room: 1, birds: .45, tick: .5, breath: .35 },
       blurb: 'Sen wakes up and gets herself off before the day starts.',
       beats: [
-        { alt: 'Her bedroom in morning light. Sen is a shape under the covers.', draw: (c, st) => HK.bedroom(c, st.T, { light: 'morning', lump: { breath: .5 + Math.sin(st.T * 1.4) * .5 } }),
+        { alt: 'Her bedroom in morning light. Sen is a shape under the covers.', bed: { room: 1, birds: .55, tick: .55, town: .5, breath: .35 }, enter: () => HK.audio.rate(.8), draw: (c, st) => HK.bedroom(c, st.T, { light: 'morning', lump: { breath: .5 + Math.sin(st.T * 1.4) * .5 } }),
           lines: [A('SEN (real name Sena), late 20s, is stirring under the covers. Her hair is tousled and the room is still.'), A('Outside, the distant sounds of the town waking up.')] },
-        { alt: 'The foot of the bed. Her toes curl.', draw: (c, st) => HK.toes(c, st.T, clamp(.2 + Math.sin(st.T * 1.8) * .4 + st.t * .05, 0, 1)),
+        { alt: 'The foot of the bed. Her toes curl.', bed: { room: 1, tick: .35, breath: .8 }, enter: () => HK.audio.rate(1.1), draw: (c, st) => HK.toes(c, st.T, clamp(.2 + Math.sin(st.T * 1.8) * .4 + st.t * .05, 0, 1)),
           lines: [A('Her breathing turns heavy. Her toes curl.')],
           act: { type: 'tap', prompt: 'Tap to cut away', auto: 7 } },
-        { alt: 'An empty small-town street at midday.', draw: (c, st) => HK.townStreet(c, st.T), lines: [A('INTERCUT. Small town views.')], act: { type: 'tap', prompt: 'Tap to cut', auto: 5 } },
-        { alt: 'A lopsided sidewalk with weeds in the cracks.', draw: (c, st) => HK.townSidewalk(c, st.T), lines: [A('Lopsided sidewalks and outgrown weeds.')], act: { type: 'tap', prompt: 'Tap to cut', auto: 5 } },
-        { alt: 'A closed shop window and tall weeds.', draw: (c, st) => HK.townWeeds(c, st.T), lines: [A('A palpable sense of stagnation.')], act: { type: 'tap', prompt: 'Tap to cut back', auto: 5 } },
-        { alt: 'Back in the bedroom, the covers moving faster.', draw: (c, st) => HK.bedroom(c, st.T, { light: 'morning', lump: { breath: .5 + Math.sin(st.T * 2.6) * .5 } }),
+        { alt: 'An empty small-town street at midday.', bed: { cicada: .8, hum: .5, town: 1, birds: .25, breath: .3 }, draw: (c, st) => HK.townStreet(c, st.T), lines: [A('INTERCUT. Small town views.')], act: { type: 'tap', prompt: 'Tap to cut', auto: 5 } },
+        { alt: 'A lopsided sidewalk with weeds in the cracks.', bed: { cicada: .9, mower: .7, birds: .3, breath: .3 }, draw: (c, st) => HK.townSidewalk(c, st.T), lines: [A('Lopsided sidewalks and outgrown weeds.')], act: { type: 'tap', prompt: 'Tap to cut', auto: 5 } },
+        { alt: 'A closed shop window and tall weeds.', bed: { cicada: .7, hum: .8, town: .6, breath: .3 }, draw: (c, st) => HK.townWeeds(c, st.T), lines: [A('A palpable sense of stagnation.')], act: { type: 'tap', prompt: 'Tap to cut back', auto: 5 } },
+        { alt: 'Back in the bedroom, the covers moving faster.', bed: { room: 1, tick: .45, birds: .3, breath: .9 }, enter: () => HK.audio.rate(1.45), draw: (c, st) => HK.bedroom(c, st.T, { light: 'morning', lump: { breath: .5 + Math.sin(st.T * 2.6) * .5 } }),
           lines: [A('Pregnant pauses between each breath. She goes on, awkwardly, for a while.')] },
-        { alt: 'Abstract folds of sheet and skin.', draw: (c, st) => HK.curves(c, st.T), lines: [A('INTERCUT. Indistinguishable body curves.')], act: { type: 'tap', prompt: 'Tap to cut', auto: 5 } },
-        { alt: 'Three childhood photos pinned to the wall.', draw: (c, st) => HK.photos(c, st.T), lines: [A('Childhood photos.')], act: { type: 'tap', prompt: 'Tap to cut', auto: 5 } },
-        { alt: 'Her copy of 1Q84 slides off the nightstand.', draw: (c, st) => { const k = ramp(st.t, 1.2, 2.6); if (k > .7 && !st.fx) { st.fx = 1; HK.audio.fx('rustle'); } HK.bookFall(c, st.T, k); }, lines: [A('1Q84 by Haruki Murakami falls off her nightstand.')], hold: 1.6 },
-        { alt: 'Black. Only her breathing.', draw: (c) => HK.rect(c, 0, 0, 480, 360, '#121418'), lines: [A('We fade out on her heavy breathing.')], hold: 1.5, bed: { breath: .9, room: .3 } },
+        { alt: 'Abstract folds of sheet and skin.', bed: { room: 1, breath: 1 }, enter: () => HK.audio.rate(1.7), draw: (c, st) => HK.curves(c, st.T), lines: [A('INTERCUT. Indistinguishable body curves.')], act: { type: 'tap', prompt: 'Tap to cut', auto: 5 } },
+        { alt: 'Three childhood photos pinned to the wall.', bed: { room: 1, tick: .6, birds: .2, breath: .5 }, enter: () => HK.audio.rate(1.2), draw: (c, st) => HK.photos(c, st.T), lines: [A('Childhood photos.')], act: { type: 'tap', prompt: 'Tap to cut', auto: 5 } },
+        { alt: 'Her copy of 1Q84 slides off the nightstand.', bed: { room: 1, tick: .5, breath: .5 }, enter: () => HK.audio.rate(.9), draw: (c, st) => { const k = ramp(st.t, 1.2, 2.6); if (k > .85 && !st.fx) { st.fx = 1; HK.audio.fx('thump'); } HK.bookFall(c, st.T, k); }, lines: [A('1Q84 by Haruki Murakami falls off her nightstand.')], hold: 1.6 },
+        { alt: 'Black. Only her breathing.', draw: (c) => HK.rect(c, 0, 0, 480, 360, '#121418'), lines: [A('We fade out on her heavy breathing.')], hold: 1.5, bed: { breath: .7, room: .6 }, enter: () => HK.audio.rate(.7) },
       ],
     },
     {
-      n: 2, slug: 'EXT. TREE – DAY', bed: { town: .35, insects: .3, room: .2 },
+      n: 2, slug: 'EXT. TREE – DAY', bed: { birds: .7, cicada: .45, town: .6, insects: .15 },
       blurb: 'A milkshake, a book, two phone calls about a house being sold.',
       beats: [
         { alt: 'Sen sits under a big tree, panting, her bike leaning on the trunk with a wheel still spinning.',
@@ -69,11 +69,11 @@
           lines: [A('She slurps for a while, then digs into her crossbody bag for her 1Q84 and her wired earbuds.')],
           act: { type: 'tap', prompt: 'Tap to plug them in', auto: 8, done: () => HK.audio.bed({ town: .2, insects: .2, jazz: .9 }) },
           then: [A('She plugs them in and plays music. She reads and slurps for a while.')] },
-        { alt: 'The book cover, a woman’s face, held exactly over Sen’s face.', bed: { town: .15, insects: .15, jazz: .9 },
+        { alt: 'The book cover, a woman’s face, held exactly over Sen’s face.', bed: { birds: .25, cicada: .15, jazz: .9 },
           draw: (c, st) => HK.bookFace(c, st.T, st.taps || 0, { flip: st.flipT != null ? ramp(st.t - st.flipT, 0, .5) : 0 }),
           lines: [A('The book cover features a woman’s face. It frames hers perfectly.')],
           act: { type: 'tap', n: 3, prompt: 'Tap to turn the page', auto: 8, onTap: st => { st.flipT = st.t; HK.audio.fx('page'); } } },
-        { alt: 'A fisherman loaded with gear walks into frame and blocks Sen. He bends to tie his shoe while his phone reads out his bank balance.', bed: { town: .3, insects: .3, jazz: .25 },
+        { alt: 'A fisherman loaded with gear walks into frame and blocks Sen. He bends to tie his shoe while his phone reads out his bank balance.', bed: { birds: .5, cicada: .35, town: .5, jazz: .25 },
           enter: st => { st.walkEnd = 4.2; },
           draw: (c, st) => HK.tree(c, st.T, { spin: 0, under: c2 => senUnderTree(c2, st.T, POSE.senGround('book'), { earbuds: true, prop: book }), after: c2 => {
             const out = since(st), walkIn = clamp(st.t / st.walkEnd, 0, 1);
@@ -86,7 +86,7 @@
             BANK('Your available balance is…'), BANK('…negative forty-one dollars and six cents.'), BANK('Your most recent transaction was…'), BANK('…an ATM withdrawal at…'), BANK('…Golden Lotus Casino for…'), BANK('…two hundred dollars. To hear more options, press—')],
           act: { type: 'tap', prompt: 'Tap to shut the phone off', auto: 4, fx: 'flip' },
           then: [A('He shuts off his flip phone, finishes tying his shoe, and walks out of frame.')], hold: 3.2 },
-        { alt: 'Sen on her own phone call, pulling at the grass.', bed: { town: .3, insects: .35 },
+        { alt: 'Sen on her own phone call, pulling at the grass.', bed: { birds: .6, cicada: .45, town: .5 },
           draw: (c, st) => { ZS(c, 2, 214, 222, () => HK.tree(c, st.T, { spin: 0, under: c2 => { senUnderTree(c2, st.T, POSE.senGround('phone', st.drag ? st.T : 0), { earbuds: false, phone: 'R', mouth: st.talking ? Math.abs(Math.sin(st.T * 8)) * .8 : 0 }); HK.grassBits(c2, st.bits || []); } })); },
           enter: st => { st.bits = []; },
           update: (st, dt) => { st.talking = st.line && st.line.who === 'SEN'; st.bits.forEach(b => { b.x += b.vx * dt; b.y += b.vy * dt; b.vy += 60 * dt; b.a += dt * 3; }); st.bits = st.bits.filter(b => b.y < 400); },
@@ -112,13 +112,13 @@
         { alt: 'Sen holds the phone out at arm’s length and squints at it.',
           draw: (c, st) => ZS(c, 2.4, 206, 206, () => HK.tree(c, st.T, { spin: 0, under: c2 => { const p = POSE.senGround('phone'); if (st.t < 3) { p.haR = [24, -52]; p.elR = [12, -44]; } senUnderTree(c2, st.T, p, { phone: 'R', eyes: st.t < 3 ? 'squint' : 'open', mouth: st.line && st.line.who === 'SEN' ? Math.abs(Math.sin(st.T * 8)) * .7 : 0 }); } })),
           lines: [A('She holds the phone out and squints at it before switching back.'), S('Hello? Yeah.'), S('Yeah, I’ll have to check out the one over here.', 'chuckles'), S('I don’t know where yet, but there’s a bait-and-tackle shop nearby.')] },
-        { alt: 'Sen lies on her back under the tree with her feet in the air.', bed: { town: .3, insects: .4 },
+        { alt: 'Sen lies on her back under the tree with her feet in the air.', bed: { birds: .7, cicada: .5, town: .5 },
           draw: (c, st) => HK.tree(c, st.T, { spin: 0, under: c2 => HK.fig(c2, 'sen', POSE.senLie(st.T * .8), { x: 232, y: 268, s: 1.35, view: 'side', phone: 'R', tilt: -1.45 }) }),
           lines: [A('Sena lies out on her back, her feet in the sky. Her conversation goes on, out of earshot.')], hold: 2.4 },
       ],
     },
     {
-      n: 3, slug: 'EXT. LAKE – DAWN', bed: { insects: .55, water: .6 },
+      n: 3, slug: 'EXT. LAKE – DAWN', bed: { insects: .55, water: .6, birds: .35 },
       blurb: 'She sits down next to a stranger and talks about cocoons.',
       beats: [
         { alt: 'A wide, meek lake at dawn. The fisherman sits on the shore beside an empty camp chair.',
@@ -213,7 +213,7 @@
       ],
     },
     {
-      n: 4, slug: 'EXT. LAKE – SAME TIME', bed: { insects: .45, water: .45 },
+      n: 4, slug: 'EXT. LAKE – SAME TIME', bed: { insects: .45, water: .45, birds: .3 },
       blurb: 'His end of the shore. His mother calls.',
       beats: [
         { alt: 'From his end of the shore. The fisherman stands in the foreground smoking; far off, Sena talks to his empty chair. His flip phone rings.',
@@ -229,7 +229,7 @@
       ],
     },
     {
-      n: 5, slug: 'INT. BEDROOM – AFTERNOON', bed: { room: .8, town: .15 },
+      n: 5, slug: 'INT. BEDROOM – AFTERNOON', bed: { room: 1, tick: .4, birds: .35, cicada: .2, town: .4 },
       blurb: 'A voice memo, recorded at a march.',
       beats: [
         { alt: 'Her bedroom in bright afternoon light. Sena marches back and forth recording a voice memo.',
@@ -266,17 +266,17 @@
       ],
     },
     {
-      n: 8, slug: 'INT. BEDROOM – MIDNIGHT', bed: { buzz: .7, room: .3 },
+      n: 8, slug: 'INT. BEDROOM – MIDNIGHT', bed: { buzz: .7, room: 1, tick: .45 },
       blurb: 'Under the sheets. The buzzing turns into insects.',
       beats: [
         { alt: 'Her bedroom at midnight, blue and dark. The covers tremble.',
-          update: st => { const k = clamp(st.t / 8, 0, 1); HK.audio.bed(HK.withScore({ buzz: .7 * (1 - k), insects: k * .9, room: .3 * (1 - k) }), .5); },
+          update: st => { const k = clamp(st.t / 8, 0, 1); HK.audio.bed(HK.withScore({ buzz: .7 * (1 - k), insects: k * .9, room: 1 - k, tick: .45 * (1 - k) }), .5); },
           draw: (c, st) => HK.bedroom(c, st.T, { light: 'midnight', lump: { breath: .4 + Math.sin(st.T * 2) * .3, buzz: 1 - clamp(st.t / 9, 0, .7) } }),
           lines: [A('Sena is using her vibrator underneath the sheets.'), A('The vibration starts to match the buzzing of the insects.')], hold: 3 },
       ],
     },
     {
-      n: 9, slug: 'EXT. LAKE – MOMENTS LATER', bed: { insects: .65, water: .5 },
+      n: 9, slug: 'EXT. LAKE – MOMENTS LATER', bed: { insects: .65, water: .5, birds: .3 },
       blurb: 'His mother, the cigarette, the bell.',
       beats: [
         { alt: 'Close on Sena asleep in her chair. Over her shoulder, the fisherman paces on the phone. Focus moves to him.',
